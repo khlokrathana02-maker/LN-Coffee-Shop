@@ -1,0 +1,111 @@
+{% extends 'master.html' %}
+
+
+{% block content %}
+    <style>
+        .container-hot h2 {
+            background-color: rgb(61, 31, 18, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: #584738;
+            align-content: center;
+            height: 50px;
+            border-top: 2px solid #f1eada;
+            border-bottom: 2px solid #f1eada;
+        }
+
+        .milkshakes {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .shake-card {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            width: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            background-color: #EDE0D4;
+        }
+
+        .shake-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        .product {
+            font-size: 18px;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        .btn_add_to_cart, .detail-btn {
+            text-decoration: none;
+            font-size: 14px;
+            background-color: #7F5539;
+            color: white;
+            align-content: center;
+        {#padding: 8px 12px;#} border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            width: 100px;
+        }
+
+        .btn-add {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .btn:hover, .detail-btn:hover {
+            background-color: #3d1f12;
+            opacity: 0.8;
+        }
+
+    </style>
+
+    <div class="container-hot">
+        <h2>NON COFFEE</h2>
+        <div class="milkshakes">
+            {% set non_coffee_items = products | selectattr('category', 'equalto', 'non coffee') | list %}
+            {% for item in non_coffee_items %}
+                <div class="shake-card">
+                    <img src="{{ item['image'] }}" alt="{{ item['title'] }}">
+                    <p class="price">${{ item['price'] }}</p>
+                    <p class="product">{{ item['title'] }}</p>
+                    <div class="btn-add">
+                        <input
+                                type="button"
+                                class="btn btn-outline-primary btn_add_to_cart"
+                                value="Add To Cart"
+                                data-id="{{ item['id'] }}"
+                                data-title="{{ item['title'] }}"
+                                data-image="{{ item['image'] }}"
+                                data-price="{{ item['price'] }}"
+                        >
+                        <a class="detail-btn" href="{{ url_for('product_detail', product_id=item['id']) }}">DETAIL</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

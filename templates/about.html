@@ -1,0 +1,91 @@
+{% extends 'master.html' %}
+
+
+{% block content %}
+    <style>
+        main {
+            display: none;
+        }
+
+        .about-us {
+            margin-top: 90px;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .coffee-shop {
+            padding: 20px 5%;
+        }
+
+        .coffee-shop img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            margin: 20px 5%;
+            padding: 40px 5%;
+            border-radius: 15px;
+            background: rgba(241, 234, 218, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+
+        }
+
+
+        .about-us h2 {
+
+            text-align: center;
+            font-size: 28px;
+            color: #3d1f12;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: #584738;
+            padding-bottom: 10px;
+        }
+
+    </style>
+    <section class="about-us">
+        <h2>About LN Coffee Shop</h2>
+        <div class="about-text">
+
+            <p>At LN Coffee Shop, coffee is more than just a drink—it’s an experience, a ritual, and a way to connect
+                with the world around us. Since our doors opened, our mission has been to create a welcoming space where
+                people can gather, unwind, and savor the simple joys of life.</p>
+            <p>
+                We take pride in every step of our coffee journey, starting from carefully sourcing the finest beans
+                from ethical and sustainable farms around the globe. Our expert roasters bring out the unique flavors
+                and aromas of each bean, ensuring that every cup you enjoy is a masterpiece of taste. From a rich, bold
+                espresso to smooth, creamy lattes and innovative seasonal specials, we craft our beverages with
+                precision, creativity, and heart.</p>
+            <p>
+                But LN Coffee Shop is more than just coffee. It’s a place where friendships are made, ideas are shared,
+                and moments are cherished. Our cozy, thoughtfully designed interior provides the perfect backdrop for a
+                quiet morning read, a productive work session, or a lively conversation with friends. Every detail, from
+                the aroma that fills the air to the warm lighting and comfortable seating, has been carefully chosen to
+                make you feel at home.</p>
+            <p>
+                Beyond serving exceptional coffee, we are committed to fostering a community that values sustainability,
+                quality, and connection. We offer locally sourced pastries and treats, support local artists, and
+                continually seek ways to reduce our environmental footprint.</p>
+            <p>
+                At LN Coffee Shop, we invite you to pause, breathe, and enjoy life’s simple pleasures—one cup of coffee
+                at a time. Whether you’re a lifelong coffee lover or just beginning your journey, we promise an
+                experience that delights your senses and warms your heart.</p>
+        </div>
+        <div class="coffee-shop">
+            <img src="../static/about/shop.png">
+        </div>
+    </section>
+
+{% endblock %}

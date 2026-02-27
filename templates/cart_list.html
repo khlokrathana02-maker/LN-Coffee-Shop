@@ -1,0 +1,417 @@
+{% extends 'master.html' %}
+
+
+{% block content %}
+    <style>
+        main {
+            display: none;
+        }
+
+        .cart-title {
+            margin-top: 60px;
+            position: relative;
+            width: 100%;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 200px;
+            display: block;
+        }
+
+        .cart-title h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #3d1f12;
+            font-size: 40px;
+        }
+
+
+        /* Container */
+        .container-cart {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 20px 5%;
+        }
+
+        /* Card Body */
+        .card-body {
+            flex: 2;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+
+
+        }
+
+        thead.table {
+            box-shadow: 0 8px 20px rgb(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        thead th {
+            text-align: center;
+            padding: 12px;
+            background-color: #f1eada;
+            font-weight: bold;
+            font-size: 16px;
+            color: #98755b;
+
+        }
+
+        thead th.product {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        thead th.remove {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        tbody td {
+            padding: 12px;
+            vertical-align: middle;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+
+        }
+
+        /* Product Image */
+        td.img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: -0.5px;
+        }
+
+        td.img img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        td.title {
+            padding-left: 50px;
+        }
+
+        td.price {
+            text-align: center;
+        }
+
+        td.add-remove {
+            text-align: center;
+        }
+
+        td.total {
+            text-align: center;
+        }
+
+        td.delete {
+            text-align: center;
+        }
+
+        /* Title */
+        td h6 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Price and Total */
+        td:not(.add-remove):not(.delete) {
+            font-weight: 500;
+            color: #584738;
+        }
+
+        /* Quantity Controls */
+        .add-remove {
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .add-remove strong {
+            min-width: 25px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .btn-add {
+            cursor: pointer;
+            border: none;
+            padding: 4px 10px;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .btn-add.btn-danger {
+            border: 1px solid #584738;
+            color: #3d1f12;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+
+        .btn-add.btn-danger:hover {
+            background-color: #98755b;
+        }
+
+
+        .btn-add.btn-primary {
+            border: 1px solid #584738;
+            color: #3d1f12;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        td strong.btn-add {
+            border-top: 1px solid #584738;
+            border-bottom: 1px solid #584738;
+            margin-left: -4px;
+            margin-right: -4px;
+
+        }
+
+        .btn-add.btn-primary:hover {
+            background-color: #98755b;
+        }
+
+        /* Delete Button */
+        .delete .btn-dalete {
+            background-color: #98755b;
+            color: #fff;
+            border: none;
+            padding: 4px 4px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .delete .btn-dalete img {
+            width: 18px;
+            height: auto;
+        }
+
+        .delete .btn-dalete:hover {
+            background-color: #584738;
+        }
+
+        /* Continue Shopping */
+        .continue {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+
+        }
+
+        .continue img {
+            width: 30px;
+            height: 30px;
+
+        }
+
+        .btn-continue {
+            padding: 8px 16px;
+            background-color: #f1eada;
+            color: #98755b;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgb(0, 0, 0, 0.2);
+        }
+
+        .btn-continue:hover {
+            background-color: #f1eada;
+            opacity: 0.6;
+        }
+
+        /* Cart Summary Card */
+        .card {
+            flex: 1;
+        {#background-color: #fff;#} border-radius: 10px;
+        {#    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);#} overflow: hidden;
+        }
+
+        .card-header {
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            color: #98755b;
+        }
+
+        .card-body h5 {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            font-size: 16px;
+            color: #584738;
+        }
+
+        .card-body hr {
+            margin: 15px 0;
+            border-color: #f1eada;
+        }
+
+        .checkout {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .btn-checkout {
+            display: inline-block;
+            width: 100%;
+            padding: 10px 0;
+            background-color: #f1eada;
+            color: #98755b;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-checkout:hover {
+            background-color: #f1eada;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1050px) {
+            .container-cart {
+                flex-direction: column;
+            }
+
+
+            tr {
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+            }
+
+            td {
+                padding: 6px 0;
+                text-align: left;
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                font-weight: bold;
+                text-align: left;
+            }
+
+            .add-remove {
+                min-width: 120px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .cart-title h2 {
+                font-size: 25px;
+            }
+        }
+
+
+    </style>
+
+    <div class="cart-title">
+        <img src="../static/cart/background.png" class="banner-img">
+        <h2>Shopping Cart</h2>
+    </div>
+    <div class="container-cart">
+        <div class="card-body">
+            <table>
+                <thead class="table">
+                <tr>
+                    <th class="product">Product</th>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th class="remove"></th>
+                </tr>
+                </thead>
+                <tbody id="cart_list_tbody">
+                <!-- Cart item 1 -->
+                <tr>
+                    <td>
+                        <img src="https://via.placeholder.com/60" class="img-fluid rounded" alt="Product 1">
+                    </td>
+                    <td>
+                        <h4 class="title">Wireless Headphones</h4>
+                        <small class="text-muted">#P1001</small>
+                    </td>
+                    <td class="price">$59.99</td>
+                    <td class="add-remove">
+                        <input type="number" class="add" value="1" min="1">
+                    </td>
+                    <td>$59.99</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger">X</button>
+                    </td>
+                </tr>
+                <!-- Add more items as needed -->
+                </tbody>
+            </table>
+            <div class="continue">
+                <img src="../static/icon/shopping.png">
+                <a href="/" class="btn-continue">Continue Shopping</a>
+            </div>
+        </div>
+        <!-- Cart summary -->
+        <div class="card">
+
+            <div class="card-body">
+                <div class="card-header bg-warning text-white ">
+                    Order Summary
+                </div>
+                <h5>
+                    <span>Sub Qty</span>
+                    <span id="label_sum_item" class="text-success"></span>
+                </h5>
+                <h5>
+                    <span> Sub Total (USD)</span>
+                    <span id="label_total_usd" class="text-success"></span>
+                </h5>
+                <h5>
+                    <span> Shipping</span>
+                    <span id="label_shipping" class="text-success"></span>
+                </h5>
+                <hr>
+                <h5>
+                    <span>Grand Total (USD)</span>
+                    <span id="label_sub_total_usd" class="text-success">$269.97</span>
+                </h5>
+                <h5 class="d-flex justify-content-between">
+                    <span>Grand Total (KHR)</span>
+                    <span id="label_total_khr" class="text-success">៛2945869.97</span>
+                </h5>
+                <div class="checkout">
+                    <a href="/check" class="btn-checkout">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

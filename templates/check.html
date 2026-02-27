@@ -1,0 +1,360 @@
+{% extends 'master.html' %}
+
+
+{% block content %}
+    <style>
+        main {
+            display: none;
+        }
+
+        .container-check {
+            max-width: 90%;
+            margin: 80px auto;
+        }
+
+        .container-check h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+            font-size: 35px;
+            color: #3d1f12;
+        }
+
+        .contact-information h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #98755b;
+            text-align: center;
+        }
+
+        .form-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .information-customer {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 10px;
+        }
+
+        .form-grid input {
+            background-color: #f1eada;
+            padding: 10px 12px;
+            border: 0 solid #f1eada;
+            border-radius: 6px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+            color: #584738;
+            box-shadow: 0 2px 6px rgba(88, 71, 56, 0.15);
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-text-fill-color: #584738 !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        .send-btn {
+            margin-top: 20px;
+            padding: 10px 18px;
+            border: none;
+            background: #f1eada;
+            color: #98755b;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(88, 71, 56, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .send-btn:hover {
+            background: #f1eada;
+            opacity: 0.6;
+        }
+
+        /* ===============================
+           ORDER SUMMARY CARD
+        =================================*/
+
+        .card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            color: #98755b;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        /* ===============================
+           PRODUCT TABLE
+        =================================*/
+
+        .product-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .product-table thead {
+            width: 100%;
+            background: #f1eada;
+            border: 0 solid #f1eada;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-table thead th:first-child {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+        }
+
+        .product-table thead th:last-child {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+
+        .product-table th,
+        .product-table td {
+            padding: 10px 0;
+            color: #584738;
+
+        }
+
+        .product-table th {
+            font-weight: 600;
+            color: #584738;
+        }
+
+
+        td.title h6 {
+            padding-left: 40px;
+            font-size: 14px;
+        }
+
+        td.price {
+            text-align: center;
+        }
+
+        td.qty {
+            text-align: center;
+        }
+
+        td.total {
+            text-align: center;
+        }
+
+        .product-table tbody tr {
+            border-bottom: 1px solid #f1eada;
+            border-radius: 6px;
+        }
+
+        .product-table td.img {
+            display: none;
+        }
+
+        /* ===============================
+           QUANTITY BUTTONS
+        =================================*/
+
+        .add-remove {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-add {
+            padding: 3px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            user-select: none;
+        }
+
+        .btn-danger {
+            display: none;
+        }
+
+        .btn-primary {
+            display: none;
+        }
+
+        .btn-add:hover {
+            opacity: 0.8;
+        }
+
+        /* ===============================
+           SUMMARY TOTALS
+        =================================*/
+        .summary {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        h5 {
+            margin: 8px 0;
+            font-size: 16px;
+            color: #98755b;
+        }
+
+        .text-success {
+            color: #98755b;
+            font-weight: bold;
+        }
+
+        /* ===============================
+           RESPONSIVE (Mobile)
+        =================================*/
+
+        @media (max-width: 800px) {
+
+            .form-section {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+    </style>
+    <div class="container-check">
+        <h2>CHECK OUT</h2>
+
+        <!-- Left Section -->
+
+        <div class="form-section">
+            <form id="cartForm" action="/send_email" method="POST" autocomplete="off" class="information-customer">
+                <div class="contact-information">
+                    <h3>Information Customer</h3>
+                </div>
+                <div class="form-grid">
+
+                    <input type="text" name="first_name" placeholder="First Name" required>
+                    <input type="text" name="last_name" placeholder="Last Name" required>
+                    <input type="text" name="phone" placeholder="Phone Number" required>
+                    <input type="email" name="email" placeholder="E-mail" required>
+                    <input type="text" name="address" placeholder="Address" required>
+                    <input type="text" name="notes" placeholder="Order Notes">
+                    <input type="hidden" name="cart_json" id="cart_json">
+                </div>
+                <button type="submit" class="send-btn">Send Order</button>
+            </form>
+
+
+            <div class="card">
+                <div class="card-header bg-warning text-white">
+                    Order Summary
+                </div>
+
+                <div class="card-body">
+                    <form action="/send_email" method="POST" autocomplete="off">
+                        <div class="product-layout">
+                            <div class="product">
+                                <table class="product-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Qty</th>
+                                        <th>Total</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody id="cart_list_tbody">
+                                    <tr>
+                                        <td>
+                                            <span class="product-name"></span>
+                                        </td>
+                                        <td class="price"></td>
+                                        <td class="qty"></td>
+                                        <td class="total"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <h5 class="summary">
+                            <span>Sub Qty</span>
+                            <span id="label_sum_item" class="text-success">0</span>
+                        </h5>
+                        <h5 class="summary">
+                            <span>Sub Total (USD)</span>
+                            <span id="label_total_usd" class="text-success">$0.00</span>
+                        </h5>
+                        <h5 class="summary">
+                            <span>Shipping</span>
+                            <span id="label_shipping" class="text-success">$0.00</span>
+                        </h5>
+                        <hr>
+                        <h5 class="summary">
+                            <span>Grand Total (USD)</span>
+                            <span id="label_sub_total_usd" class="text-success">$0.00</span>
+                        </h5>
+                        <h5 class="summary">
+                            <span>Grand Total (KHR)</span>
+                            <span id="label_total_khr" class="text-success">៛0</span>
+                        </h5>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const cartForm = document.getElementById("cartForm");
+
+        cartForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // prevent default temporarily
+
+            // Prepare cart JSON to send
+            document.getElementById("cart_json").value = JSON.stringify(cart_list);
+
+            cart_list = [];
+            localStorage.removeItem("cart_list");
+            document.getElementById("cart_list_tbody").innerHTML = "";
+
+
+            // Reset cart badge
+            const cartBadge = document.getElementById("cart-count");
+            if (cartBadge) cartBadge.innerText = "🛒 Cart 0";
+
+            // Submit the form
+            cartForm.submit();
+        });
+
+
+    </script>
+
+{% endblock %}

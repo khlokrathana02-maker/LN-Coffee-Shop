@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LN Coffee Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/static/css.css">
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <div class="navbar-mobile">
+            <div class="hamburger" onclick="toggleMenu()">
+                <img src="https://cdn-icons-png.flaticon.com/128/13956/13956079.png">
+            </div>
+            <div class="overlay-hamburger" id="sidebar">
+                <div class="hamburger-close" onclick="toggleMenu()">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2099/2099238.png">
+                </div>
+                <div class="logo-hamburger">
+                    LN Coffee Shop
+                </div>
+                <ul class="hamburger-menu">
+                    <li class="menu-title"><img src="https://cdn-icons-png.flaticon.com/128/10349/10349274.png">
+                        <a href="/home">Home</a>
+                    </li>
+                    <li class="menu-title">
+                        <ul class="main-menu">
+                            <li class="menu-item-hamburger" onclick="toggleSubMenu()">
+                                <div class="menu-hamburger-menu">
+                                    <img src="https://cdn-icons-png.flaticon.com/128/2187/2187376.png">
+                                    <div class="menu-arrow">
+                                        <p>Menu</p>
+                                        <span class="arrow">
+                                        <img src="https://cdn-icons-png.flaticon.com/128/32/32195.png">
+                                    </span>
+                                    </div>
+
+
+                                </div>
+
+                                <!-- Sub Menu -->
+                                <ul class="sub-menu" id="subMenu">
+                                    <li><img src="https://cdn-icons-png.flaticon.com/128/92/92135.png">
+                                        <a href="/hot">Hot Coffee</a>
+                                    </li>
+                                    <li><img src="https://cdn-icons-png.flaticon.com/128/5194/5194201.png">
+                                        <a href="/iced">Iced Coffee</a>
+                                    </li>
+                                    <li><img src="https://cdn-icons-png.flaticon.com/128/15641/15641380.png">
+                                        <a href="/noncoffee">Non Coffee</a>
+                                    </li>
+                                    <li><img src="https://cdn-icons-png.flaticon.com/128/7016/7016165.png">
+                                        <a href="/frappe">Frappe</a>
+                                    </li>
+                                    <li><img src="https://cdn-icons-png.flaticon.com/128/492/492988.png">
+                                        <a href="/soda">Soda</a>
+                                    </li>
+                                    <li><img src="https://cdn-icons-png.flaticon.com/128/6288/6288668.png">
+                                        <a href="/juice">Juice</a></li>
+                                    <li><img src="https://cdn-icons-png.flaticon.com/128/792/792815.png">
+                                        <a href="/cake">Cake</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title"><img src="https://cdn-icons-png.flaticon.com/128/8644/8644718.png">
+                        <a href="/about">About Us</a>
+                    </li>
+                    <li class="menu-title"><img src="https://cdn-icons-png.flaticon.com/128/10439/10439857.png">
+                        <a href="/contact"> Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="logo">LN Coffee Shop</div>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/home" class="menu">Home</a></li>
+
+            <li class="menu-item">
+                <a href="#">Menu<img src="https://cdn-icons-png.flaticon.com/128/2722/2722987.png"></a>
+                <ul class="dropdown">
+                    <li><a href="/hot">Hot Coffee</a></li>
+                    <li><a href="/iced">Iced Coffee</a></li>
+                    <li><a href="/noncoffee">Non Coffee</a></li>
+                    <li><a href="/frappe">Frappe</a></li>
+                    <li><a href="/soda">Soda</a></li>
+                    <li><a href="/juice">Juice</a></li>
+                    <li><a href="/cake">Cake</a></li>
+                </ul>
+            </li>
+
+            <li><a href="/about" class="menu">About Us</a></li>
+            <li><a href="/contact" class="menu">Contact Us</a></li>
+
+            <li>
+                <a href="/cart_list" class="cart-btn" id="cart">Cart 2</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="../static/slider/slider01.png">
+                    <h3>Americano</h3>
+                </div>
+                <div class="slide">
+                    <img src="../static/slider/slider02.png">
+                    <h3>Cappuccino</h3>
+                </div>
+                <div class="slide">
+                    <img src="../static/slider/slider03.png">
+                    <h3>Matcha Frappe</h3>
+                </div>
+                <div class="slide">
+                    <img src="../static/slider/slider04.png">
+                    <h3>Iced Latte</h3>
+                </div>
+                <div class="slide">
+                    <img src="../static/slider/slider05.png">
+                    <h3>Matcha Latte</h3>
+                </div>
+            </div>
+            <div class="btn-slider">
+                <button class="prev"><</button>
+                <button class="next">></button>
+            </div>
+
+        </div>
+    </main>
+</header>
+{% block content %}
+
+
+{% endblock %}
+<footer>
+    <hr>
+    <div class="footer-content">
+        <div class="footer-logo">
+            LN Coffee Shop
+        </div>
+        <ul class="footer-links">
+            <li class="follow-us"><a href="#">FOLLOW US</a>
+                <div class="follow">
+                    <div class="facebook">
+                        <a href="">
+                            <img src="../static/footer/facebook.png">
+                            <p>Facebook</p>
+                        </a>
+                    </div>
+                    <div class="instagram">
+                        <a href="">
+                            <img src="../static/footer/instagram.png">
+                            <p>Instagram</p>
+                        </a>
+                    </div>
+                    <div class="tiktok">
+                        <a href="">
+                            <img src="../static/footer/social-media.png">
+                            <p>TikTok</p>
+                        </a>
+                    </div>
+                    <div class="youtube">
+                        <a>
+                            <img src="../static/footer/youtube.png">
+                            <p>Youtube</p>
+                        </a>
+                    </div>
+                </div>
+
+            </li>
+            <li class="contact-us"><a href="/contact">CONTACT US</a>
+                <div class="gmail">
+                    <a href="mailto:lncoffee005@gmail.com">
+                        <img src="../static/footer/email.png">
+                        <p>lncoffee005@gmail.com</p>
+                    </a>
+                </div>
+                <div class="telephone">
+                    <a href="tel:+8550978901291">
+                        <img src="../static/footer/phone-call.png">
+                        <p>(+855) 097 8901 291</p>
+                    </a>
+                </div>
+                <div class="telephone">
+                    <a href="tel:+855099359537">
+                        <img src="../static/footer/phone-call.png">
+                        <p>(+855) 099 359 537</p>
+                    </a>
+                </div>
+                <div class="telegram">
+                    <a>
+                        <img src="../static/footer/telegram.png">
+                        <p>Telegram</p>
+                    </a>
+                </div>
+            </li>
+            <li class="we-accept"><a href="#">WE ACCEPT</a>
+                <div class="bank">
+                    <img src="https://informal.digitaleconomy.gov.kh/images/ministry-icon/aba_round.png">
+                    <img src="https://companieslogo.com/img/orig/ABC.KH-3aa8d94f.png?t=1720244490">
+                </div>
+
+            </li>
+        </ul>
+
+    </div>
+    <hr>
+</footer>
+<div class="under-footer">LN Coffee Shop | &copy; 2025 All Right Reserved.</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    {#hamburger menu#}
+
+    function toggleMenu() {
+        document.getElementById("sidebar").classList.toggle("active");
+    }
+
+    function toggleSubMenu() {
+        document.getElementById("subMenu").classList.toggle("show");
+    }
+
+
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    let currentIndex = 0; // Start with second slide as center
+
+    function updateSlider() {
+        slider.style.transform = `translateX(calc(50% - ${(currentIndex + 0.5) * 300}px - ${currentIndex * 100}px))`;
+
+
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active');
+            if (index === currentIndex) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex <= 0) ? slides.length - 1 : currentIndex - 1;
+        updateSlider();
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex >= slides.length - 1) ? 0 : currentIndex + 1;
+        updateSlider();
+    });
+
+    updateSlider();
+
+    setInterval(() => {
+        currentIndex = (currentIndex >= slides.length - 1) ? 0 : currentIndex + 1;
+        updateSlider();
+    }, 3000);
+
+
+    let cart_list = JSON.parse(localStorage.getItem('cart_list') ?? '[]')
+    let btn_add_to_cart = document.querySelectorAll('.btn_add_to_cart')
+    let cart = document.getElementById('cart')
+    let cart_list_tbody = document.getElementById('cart_list_tbody')
+
+    let label_total_usd = document.getElementById('label_total_usd')
+    let label_total_khr = document.getElementById('label_total_khr')
+
+
+    cart.innerText = `🛒 Cart ${cart_list.length}`
+    btn_add_to_cart.forEach(item => {
+        item.addEventListener('click', function () {
+            let dpl_index = cart_list.findIndex(cart_item => cart_item.title === this.getAttribute('data-title'))
+            if (dpl_index > -1) {
+                cart_list[dpl_index].qty += 1
+            } else {
+                cart_list.push(
+                    {
+                        'id': this.getAttribute('data-id'),
+                        'title': this.getAttribute('data-title'),
+                        'qty': 1,
+                        'price': this.getAttribute('data-price'),
+                        'image': this.getAttribute('data-image'),
+                    }
+                )
+            }
+            localStorage.setItem('cart_list', JSON.stringify(cart_list))
+            cart.innerText = `🛒 Cart ${cart_list.length}`
+            Swal.fire({
+                position: "top-start",
+                icon: "success",
+                title: "You Added To Cart Successfully!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+    })
+
+    renderCartList()
+    total()
+
+
+    function renderCartList() {
+        let string_tr = ''
+        cart_list_tbody.innerHTML = ''
+        cart_list.forEach((item, index) => {
+            string_tr += `      <tr>
+                                <td class="img">
+                                    <a href="/product/${item.id}">
+                                        <img src="${item.image}" alt="${item.title}">
+                                    </a>
+                                </td>
+                                <td class="title">
+                                    <h6 class="mb-0">${item.title}</h6>
+                                </td>
+                                <td class="price">$${item.price}</td>
+                                <td class="add-remove">
+                                   <span class="btn-add  btn-sm btn-danger" onclick="removeQty(${index})">-</span>
+                                   <strong class="btn-add">${item.qty}</strong>
+                                   <span class="btn-add btn-sm btn-primary" onclick="addQty(${index})">+</span>
+                                </td>
+                                <td class="total">$${item.qty * item.price}</td>
+                                <td class="delete">
+                                    <button onclick="removeCartItem(${index})" class="btn-dalete btn-sm btn-danger"><img src="https://cdn-icons-png.flaticon.com/128/484/484662.png"> </button>
+                                </td>
+                            </tr>`
+
+        })
+        cart_list_tbody.innerHTML = string_tr
+    }
+
+
+    let items = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let cart_lists = items.map(item => ({
+        id: item.id,
+        title: item.title,
+        qty: item.qty,
+        price: item.price,
+        image: item.image
+    }));
+
+    const cartInput = document.getElementById("cart_input");
+
+
+    function removeCartItem(index) {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to remove this item?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#6F4518",
+            cancelButtonColor: "#D3A376",
+            confirmButtonText: "Yes, remove it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                cart_list.splice(index, 1)
+                localStorage.setItem('cart_list', JSON.stringify(cart_list))
+                renderCartList()
+                total()
+                updateCartBadge()
+            }
+        });
+    }
+
+    function total() {
+        let total_usd = 0
+        let total_khr = 0
+        let totalItem = 0
+        let sub_total_usd = 0
+        let shipping = 0
+        cart_list.forEach(item => {
+            totalItem += parseInt(item.qty);
+            total_usd += (parseFloat(item.qty) * parseFloat(item.price))
+        })
+        shipping = 2
+        sub_total_usd = total_usd + shipping
+        total_khr = sub_total_usd * 4100
+        total_khr = Math.ceil(total_khr / 100) * 100
+
+        label_sub_total_usd.innerText = `$${sub_total_usd.toFixed(2)}`
+        label_shipping.innerText = `$${shipping.toFixed(2)}`
+        label_sum_item.innerText = `${totalItem}`
+        label_total_usd.innerText = `$${total_usd.toFixed(2)}`
+        label_total_khr.innerText = `៛${total_khr.toLocaleString()}`
+    }
+
+    function addQty(index) {
+        cart_list[index].qty++
+        localStorage.setItem('cart_list', JSON.stringify(cart_list))
+        renderCartList()
+        total()
+    }
+
+    function removeQty(index) {
+        if (cart_list[index].qty <= 1) {
+            removeCartItem(index)
+        } else {
+            cart_list[index].qty--
+        }
+        localStorage.setItem('cart_list', JSON.stringify(cart_list))
+        renderCartList()
+        total()
+    }
+
+    function updateCartBadge() {
+        if (!cart) return;
+        cart.innerText = `🛒 Cart ${cart_list.length}`;
+    }
+
+
+    function getOrderData() {
+        const tbody = document.getElementById("cart_list_tbody");
+        const rows = tbody.querySelectorAll("tr");
+        let order_items = [];
+
+        rows.forEach(row => {
+            let name = row.querySelector(".product-name")?.innerText || "";
+            let price = parseFloat(row.querySelector(".price")?.innerText.replace("$", "") || 0);
+            let qty = parseInt(row.querySelector(".qty")?.innerText || 0);
+            let total = parseFloat(row.querySelector(".total")?.innerText.replace("$", "") || 0);
+
+            order_items.push({name, price, qty, total});
+        });
+
+        return order_items;
+    }
+
+
+    document.getElementById("cartForm").addEventListener("submit", function (e) {
+        const tbody = document.getElementById("cart_list_tbody");
+        const rows = tbody.querySelectorAll("tr");
+        let cart = [];
+
+        rows.forEach(row => {
+            const name = row.querySelector(".title h6")?.innerText || "";
+            const price = parseFloat(row.querySelector(".price")?.innerText.replace("$", "") || 0);
+            const qty = parseInt(row.querySelector(".add-remove strong")?.innerText || 0);
+            const total = parseFloat(row.querySelector(".total")?.innerText.replace("$", "") || 0);
+            cart.push({name, price, qty, total});
+        });
+
+        // Also get totals
+        let usd = document.getElementById("label_total_usd").innerText.replace("$", "");
+        let khr = document.getElementById("label_total_khr").innerText.replace("៛", "");
+
+        const order = {
+            items: cart,
+            total_usd: parseFloat(usd),
+            total_khr: parseFloat(khr)
+        };
+
+        document.getElementById("cart_json").value = JSON.stringify(order);
+    });
+
+    function resetCart() {
+        // 1️⃣ Clear cart array
+        cart_list = [];
+
+        // 2️⃣ Clear localStorage
+        localStorage.removeItem("cart_list");
+
+        // 3️⃣ Re-render table
+        renderCartList();
+
+        // 4️⃣ Reset totals
+        label_sub_total_usd.innerText = "$0.00";
+        label_shipping.innerText = "$0.00";
+        label_sum_item.innerText = "0";
+        label_total_usd.innerText = "$0.00";
+        label_total_khr.innerText = "៛0";
+
+        // 5️⃣ Reset badge
+        if (cart) cart.innerText = "🛒 Cart 0";
+    }
+</script>
+
+</body>
+{#{ %block %}#}
+</html>

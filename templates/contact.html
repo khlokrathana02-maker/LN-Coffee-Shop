@@ -1,0 +1,153 @@
+{% extends 'master.html' %}
+
+
+{% block content %}
+    <style>
+        main {
+            display: none;
+        }
+
+        .contact {
+            margin-top: 70px;
+        }
+
+        .contact {
+            padding: 40px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        /* Section heading */
+        .contact h2 {
+            font-size: 26px;
+            font-weight: bold;
+            color: #3d1f12;
+            text-align: center;
+        }
+
+        .contact .information {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 40px;
+            flex-wrap: wrap;
+            background: rgba(241, 234, 218, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .contact .main-information {
+            flex: 1 1 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact .main-information > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact .main-information > div > div {
+            font-size: 20px;
+            font-weight: bold;
+            color: #98755b;
+            margin-bottom: 5px;
+        }
+
+        .contact .main-information p {
+            margin: 0;
+            font-size: 16px;
+            color: #584738;
+            line-height: 1.5;
+        }
+
+        .contact .information img {
+            flex: 1 1 300px;
+            max-width: 400px;
+            justify-content: center;
+
+        }
+
+        div.map {
+            width: 100%;
+        }
+
+        .contact .map img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 800px) {
+            .contact .information {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact .main-information,
+            .contact .information img {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .contact .map img {
+                max-width: 100%;
+                margin-top: 20px;
+            }
+        }
+    </style>
+
+    <section class="contact">
+        <h2>FOR MORE INFORMATION PLEASE CONTACT US</h2>
+        <div class="information">
+
+
+            <div class="main-information">
+                <div class="main-contact">
+                    <div>Address:</div>
+                    <p>No. 86A, Street 110, Russian Federation Boulevard, Sangkat Teuk Laak I, Khan Toul Kork, Phnom
+                        Penh,
+                        Cambodia</p>
+                </div>
+                <div class="main-contact">
+                    <div>Email:</div>
+                    <p>lncoffee005@gmail.com</p>
+                </div>
+                <div class="main-contact">
+                    <div>Facebook:</div>
+                    <p>LN Coffee Shop</p>
+                </div>
+                <div class="main-contact">
+                    <div>Instagram:</div>
+                    <p>LN Coffee Shop</p>
+                </div>
+                <div class="main-contact">
+                    <div>TikTok:</div>
+                    <p>LN Coffee</p>
+                </div>
+                <div class="main-contact">
+                    <div>Phone Number:</div>
+                    <p>(+855) 097 8901 291, 099 359 537</p>
+                </div>
+                <div class="main-contact">
+                    <div>Telegram:</div>
+                    <p>(+855) 097 8901 291, 099 359 537</p>
+                </div>
+            </div>
+            <img src="../static/contact/map.png">
+        </div>
+        <div class="map">
+            <img src="../static/contact/map1.jpg">
+        </div>
+
+    </section>
+{% endblock %}

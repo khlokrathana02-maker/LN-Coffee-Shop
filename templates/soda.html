@@ -1,0 +1,91 @@
+{% extends 'master.html' %}
+
+
+{% block content %}
+    <style>
+
+        .milkshakes {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .shake-card {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            width: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            background-color: #EDE0D4;
+        }
+
+        .shake-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        .product {
+            font-size: 18px;
+            margin: 5px 0;
+            text-align: center;
+        }
+
+        .btn_add_to_cart, .detail-btn {
+            font-size: 14px;
+            background-color: #7F5539;
+            color: white;
+            align-content: center;
+        {#padding: 8px 12px;#} border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            width: 100px;
+        }
+
+        .btn-add {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+    </style>
+    <div class="container-hot">
+        <h2>SODA</h2>
+        <div class="milkshakes">
+            {% set soda_items = products | selectattr('category', 'equalto', 'soda') | list %}
+            {% for item in soda_items %}
+                <div class="shake-card">
+                    <img src="{{ item['image'] }}" alt="{{ item['title'] }}">
+                    <p class="price">${{ item['price'] }}</p>
+                    <p class="product">{{ item['title'] }}</p>
+                    <div class="btn-add">
+                        <input
+                                type="button"
+                                class="btn btn-outline-primary btn_add_to_cart"
+                                value="Add To Cart"
+                                data-id="{{ item['id'] }}"
+                                data-title="{{ item['title'] }}"
+                                data-image="{{ item['image'] }}"
+                                data-price="{{ item['price'] }}"
+                        >
+                        <a class="detail-btn" href="{{ url_for('product_detail', product_id=item['id']) }}">DETAIL</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

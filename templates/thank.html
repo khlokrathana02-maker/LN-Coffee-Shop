@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center; /* horizontal center */
+            align-items: center; /* vertical center */
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background blur */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('/static/master/Coffee.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .order-container {
+            width: 400px;
+            padding: 30px 20px;
+            background-color: #fff9f0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .order-container .checkmark img {
+            width: 100px;
+            height: 100px;
+        }
+
+
+        .order-container h2 {
+            padding: 10px 30px;
+            font-size: 20px;
+            color: #3d1f12;
+            margin-bottom: 25px;
+
+        }
+
+        .order-container .order-details {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: #fff4e6;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        /* Responsive for smaller screens */
+        @media (max-width: 500px) {
+            .order-container {
+                margin: 20px;
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="order-container">
+    <div class="checkmark"><img src="https://cdn-icons-png.flaticon.com/128/9561/9561839.png"></div>
+    <h2>Your order has been successfully submitted</h2>
+
+</div>
+
+</body>
+
+<script>
+    const randomOrderID = Math.floor(10000000 + Math.random() * 90000000);
+    document.getElementById('orderId').textContent = randomOrderID;
+
+
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+    const year = String(now.getFullYear()).slice(-2); // last 2 digits of year
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+
+    const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}`;
+    document.getElementById('dateTime').textContent = formattedDate;
+</script>
+</html>
