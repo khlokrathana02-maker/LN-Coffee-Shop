@@ -3572,9 +3572,9 @@ def master():
     return render_template("master.html")
 
 
-@app.route('/receipt')
-def receipt():
-    return render_template("thank.html")
+# @app.route('/receipt')
+# def receipt():
+#     return render_template("submit.html")
 
 
 @app.route("/cart")
@@ -3952,7 +3952,7 @@ def send_email_route():
         checkout_status = process_checkout(data)
 
         return render_template(
-            "thank.html",
+            "submit.html",
             status=checkout_status,
             total_usd=sum(to_number(i['qty']) * to_number(i['price']) for i in data["renderCartList"]),
             total_khr=sum(to_number(i['qty']) * to_number(i['price']) for i in data["renderCartList"]) * USD_TO_KHR
